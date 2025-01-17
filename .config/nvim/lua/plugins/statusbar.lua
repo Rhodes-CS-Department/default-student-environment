@@ -4,14 +4,11 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   {
-    "nvim-lualine/lualine.nvim",
+    "echasnovski/mini.statusline",
+    version = false,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-      require("lualine").setup({
-        options = {
-          theme = "solarized_dark",
-        },
-      })
+      require("mini.statusline").setup()
     end,
   },
 }
