@@ -1,8 +1,5 @@
 # Set up the prompt
-
-autoload -Uz promptinit
-promptinit
-prompt adam1
+PS1='[%n@%m:%1~]$ '
 
 setopt histignorealldups sharehistory
 
