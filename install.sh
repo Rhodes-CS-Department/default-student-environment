@@ -28,12 +28,17 @@ if [ -d $HOME/.local/state//nvim ]; then
   mv $HOME/.local/state/nvim $HOME/.local/state/nvim.original
 fi
 
-echo "installing default student environment in your home direcotry"
+echo "installing default student environment in your home directory"
 
 /usr/bin/install -m 600 .bashrc $HOME/.bashrc
 /usr/bin/install -m 600 .profile $HOME/.profile
 /usr/bin/install -m 600 .zshrc $HOME/.zshrc
 
 /usr/bin/cp -r .config/nvim $HOME/.config
+
+# set up nvim backup directory
+if [ ! -e $HOME/.backup ]; then
+  mkdir -p $HOME/.backup
+fi
 
 echo "installation complete -- logout and login to see changes"

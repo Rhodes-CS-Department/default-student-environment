@@ -13,14 +13,14 @@ vim.opt.expandtab     = true
 vim.opt.tabstop       = 2
 vim.opt.shiftwidth    = 2
 
--- sync nvim / systemt clipboard
+-- sync nvim / system clipboard
 vim.opt.clipboard     = "unnamedplus"
 
 -- keep screen centered
 --vim.opt.scrolloff     = 999
 
 vim.opt.backup    = true
-vim.opt.backupdir = "./.backup,~/.backup,.,/tmp"
+vim.opt.backupdir = vim.fn.expand("$HOME/.backup")
 
 -- allow ragged edges for visual block mode
 vim.opt.virtualedit   = "block"
@@ -35,7 +35,7 @@ vim.opt.ignorecase    = true
 vim.opt.termguicolors = true
 
 -- Make sure to set `mapleader` before lazy so your mappings are correct
-vim.g.mapleader       = " " 
+vim.g.mapleader       = " "
 
 -- reserve space for signs in the gutter
 vim.opt.signcolumn = 'yes'
