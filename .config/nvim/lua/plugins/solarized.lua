@@ -1,11 +1,11 @@
 return {
- -- solarized theme
+  -- solarized theme
   {
-  "Tsuzat/NeoSolarized.nvim",
+  "lifepillar/vim-solarized8",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
-    -- config = function()
-    --   vim.cmd [[ colorscheme NeoSolarized ]]
-    -- end
+    config = function()
+      -- vim.cmd [[ colorscheme solarized8 ]]
+    end
   },
 }
