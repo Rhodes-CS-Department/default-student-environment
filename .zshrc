@@ -15,6 +15,9 @@ EDITOR=nvim
 VISUAL=nvim
 export EDITOR VISUAL
 
+# Use colors in ls
+alias ls='ls --color=auto'
+
 # Use modern completion system
 autoload -Uz compinit
 compinit
