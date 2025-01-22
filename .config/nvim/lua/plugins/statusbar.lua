@@ -5,7 +5,7 @@ return {
   },
   {
     "echasnovski/mini.statusline",
-    enabled = false,
+    enabled = true,
     version = false,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
