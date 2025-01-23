@@ -7,7 +7,7 @@ return {
         -- A list of parser names, or "all" (the five listed parsers should always be installed)
         ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "cmake", "cuda",
         "go", "html", "java", "json", "passwd", "markdown", "python", "rust",
-        "ssh_config", "strace", "tiger", "verilog", },
+        "ssh_config", "strace", "tiger", },
 
         auto_install = true,
 
