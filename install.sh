@@ -9,6 +9,10 @@ if [ -f $HOME/.bashrc ]; then
   mv $HOME/.bashrc $HOME/.bashrc.original
 fi
 
+if [ -f $HOME/.bash_logout ]; then
+  mv $HOME/.bash_logout $HOME/.bash_logout.original
+fi
+
 if [ -f $HOME/.profile ]; then
   mv $HOME/.profile $HOME/.profile.original
 fi
