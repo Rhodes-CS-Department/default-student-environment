@@ -19,6 +19,8 @@ alias ls='ls --color=auto'
 autoload -Uz compinit
 compinit
 
+setopt COMPLETE_IN_WORD
+
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
