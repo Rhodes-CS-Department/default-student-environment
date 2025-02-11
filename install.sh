@@ -2,6 +2,7 @@
 
 echo "saving your default configuration files"
 
+SOURCEDIR=`dirname $0`
 
 # shell things
 
@@ -32,13 +33,14 @@ if [ -d $HOME/.local/state//nvim ]; then
   mv $HOME/.local/state/nvim $HOME/.local/state/nvim.original
 fi
 
-echo "installing default student environment in your home directory"
+echo "installing default student environment in your home directory from $SOURCEDIR"
 
-/usr/bin/install -m 600 .bashrc $HOME/.bashrc
-/usr/bin/install -m 600 .profile $HOME/.profile
-/usr/bin/install -m 600 .zshrc $HOME/.zshrc
+/usr/bin/install -m 600 $SOURCEDIR/.bashrc $HOME/.bashrc
+/usr/bin/install -m 600 $SOURCEDIR/.profile $HOME/.profile
+/usr/bin/install -m 600 $SOURCEDIR/.zshrc $HOME/.zshrc
 
-/usr/bin/cp -r .config/nvim $HOME/.config
+/usr/bin/cp -r $SOURCEDIR/.config/nvim $HOME/.config
+/usr/bin/chmod -R og-rwx $HOME/.config/nvim
 
 # set up nvim backup directory
 if [ ! -e $HOME/.backup ]; then
