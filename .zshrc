@@ -38,3 +38,5 @@ zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+alias fm='sed -i~ "s/COMPILE/compile/" makefile; sed -ie~ "s/CLEAN/clean/" makefile'
