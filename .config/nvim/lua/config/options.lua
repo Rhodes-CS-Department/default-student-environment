@@ -96,7 +96,11 @@ vim.opt.incsearch     = true
 vim.opt.mouse         = "a"
 
 -- allow 24-bit colors / fancy fonts / powerline / nerd fonts
+if not vim.env.NVIM_NO_OSC52 then
 vim.opt.termguicolors = true
+else
+vim.opt.termguicolors = false
+end
 
 -- Make sure to set `mapleader` before lazy so your mappings are correct
 vim.g.mapleader       = " "
