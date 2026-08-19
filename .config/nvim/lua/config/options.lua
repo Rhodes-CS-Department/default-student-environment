@@ -69,6 +69,11 @@ if not vim.env.NVIM_NO_OSC52 and (vim.env.SSH_TTY or vim.env.SSH_CONNECTION) the
       ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
     },
   }
+else
+  vim.g.clipboard = false
+  vim.g.termfeatures = {
+    osc52 = false,
+  }
 end
 
 -- keep screen centered
