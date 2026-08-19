@@ -19,6 +19,9 @@ alias ls='ls --color=auto'
 autoload -Uz compinit
 compinit
 
+#NVIM_NO_OSC52=1
+#export NVIM_NO_OSC52
+
 setopt COMPLETE_IN_WORD
 
 zstyle ':completion:*' auto-description 'specify: %d'
