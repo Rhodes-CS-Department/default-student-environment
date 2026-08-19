@@ -1,66 +1,34 @@
 local builtin = require('telescope.builtin')
 
 local set = vim.keymap.set
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
 
-set('n', '<leader>ff', builtin.find_files, {})
-set('n', '<leader>fg', builtin.live_grep, {})
-set('n', '<leader>fb', builtin.buffers, {})
-set('n', '<leader>fh', builtin.help_tags, {})
+-- Telescope (fuzzy finder)
+set('n', '<leader>ff', builtin.find_files, { desc = "Find files" })
+set('n', '<leader>fg', builtin.live_grep,  { desc = "Grep in project" })
+set('n', '<leader>fb', builtin.buffers,    { desc = "List open buffers" })
+set('n', '<leader>fh', builtin.help_tags,  { desc = "Search help tags" })
+
+-- File tree
+set('n', '<leader>e', '<Cmd>Neotree toggle<CR>', { desc = "Toggle file tree" })
+
+-- Clear search highlight
+set('n', '<Esc>', '<Cmd>nohlsearch<CR>', { desc = "Clear search highlight" })
 
 -- Move between windows
-set("n", "<c-j>", "<c-w><c-j>")
-set("n", "<c-k>", "<c-w><c-k>")
-set("n", "<c-l>", "<c-w><c-l>")
-set("n", "<c-h>", "<c-w><c-h>")
--- Resize windows
-set("n", "<M-,>", "<c-w>5<")
-set("n", "<M-.>", "<c-w>5>")
-set("n", "<M-t>", "<c-W>+")
-set("n", "<M-s>", "<c-W>-")
+set("n", "<c-j>", "<c-w><c-j>", { desc = "Move to window below" })
+set("n", "<c-k>", "<c-w><c-k>", { desc = "Move to window above" })
+set("n", "<c-l>", "<c-w><c-l>", { desc = "Move to window right" })
+set("n", "<c-h>", "<c-w><c-h>", { desc = "Move to window left" })
 
+-- Resize windows (leader-based; Alt bindings are unreliable across terminals)
+set("n", "<leader>w,", "<c-w>5<", { desc = "Shrink window horizontally" })
+set("n", "<leader>w.", "<c-w>5>", { desc = "Grow window horizontally" })
+set("n", "<leader>w+", "<c-W>+",  { desc = "Grow window vertically" })
+set("n", "<leader>w-", "<c-W>-",  { desc = "Shrink window vertically" })
 
-
--- barbar keymaps
---
--- Move to previous/next
--- map('n', '<A-,>', '<Cmd>BufferPrevious<CR>', opts)
--- map('n', '<A-.>', '<Cmd>BufferNext<CR>', opts)
--- Re-order to previous/next
-map('n', '<A-<>', '<Cmd>BufferMovePrevious<CR>', opts)
-map('n', '<A->>', '<Cmd>BufferMoveNext<CR>', opts)
--- Goto buffer in position...
-map('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', opts)
-map('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', opts)
-map('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', opts)
-map('n', '<A-4>', '<Cmd>BufferGoto 4<CR>', opts)
-map('n', '<A-5>', '<Cmd>BufferGoto 5<CR>', opts)
-map('n', '<A-6>', '<Cmd>BufferGoto 6<CR>', opts)
-map('n', '<A-7>', '<Cmd>BufferGoto 7<CR>', opts)
-map('n', '<A-8>', '<Cmd>BufferGoto 8<CR>', opts)
-map('n', '<A-9>', '<Cmd>BufferGoto 9<CR>', opts)
-map('n', '<A-0>', '<Cmd>BufferLast<CR>', opts)
--- Pin/unpin buffer
-map('n', '<A-p>', '<Cmd>BufferPin<CR>', opts)
--- Goto pinned/unpinned buffer
---                 :BufferGotoPinned
---                 :BufferGotoUnpinned
--- Close buffer
-map('n', '<A-c>', '<Cmd>BufferClose<CR>', opts)
--- Wipeout buffer
---                 :BufferWipeout
--- Close commands
---                 :BufferCloseAllButCurrent
---                 :BufferCloseAllButPinned
---                 :BufferCloseAllButCurrentOrPinned
---                 :BufferCloseBuffersLeft
---                 :BufferCloseBuffersRight
--- Magic buffer-picking mode
---map('n', '<C-p>', '<Cmd>BufferPick<CR>', opts)
--- Sort automatically by...
-map('n', '<leader>bb', '<Cmd>BufferOrderByBufferNumber<CR>', opts)
-map('n', '<leader>bn', '<Cmd>BufferOrderByName<CR>', opts)
-map('n', '<leader>bd', '<Cmd>BufferOrderByDirectory<CR>', opts)
-map('n', '<leader>bl', '<Cmd>BufferOrderByLanguage<CR>', opts)
-map('n', '<leader>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
+-- Toggle between light and dark background (reloads the colorscheme)
+set("n", "<leader>tb", function()
+  vim.o.background = (vim.o.background == "dark") and "light" or "dark"
+  local scheme = (vim.o.background == "light") and "tokyonight-day" or "tokyonight-storm"
+  vim.cmd.colorscheme(scheme)
+end, { desc = "Toggle light/dark background" })

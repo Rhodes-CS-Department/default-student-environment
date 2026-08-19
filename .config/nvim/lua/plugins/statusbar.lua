@@ -1,15 +1,13 @@
 return {
   -- status bar line packages
   {
-    "nvim-tree/nvim-web-devicons",
-  },
-  {
     "echasnovski/mini.statusline",
     enabled = true,
     version = false,
-    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-      require("mini.statusline").setup()
+      require("mini.statusline").setup({
+        use_icons = false,
+      })
     end,
   },
 }
